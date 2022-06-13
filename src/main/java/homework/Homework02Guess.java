@@ -24,7 +24,7 @@ public class Homework02Guess {
         int best_score = 1000000;
 
         while(true) {
-            int max_num = 100, min_num = 0;
+            int max_num = 100, min_num = 1;
 
             System.out.println("메뉴를 선택해주세요.");
             System.out.println("1. 플레이, 2. 최고점수 확인, 3. 종료");

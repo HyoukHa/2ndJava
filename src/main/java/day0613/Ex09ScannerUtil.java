@@ -1,4 +1,4 @@
-package day0614;
+package day0613;
 
 
 import util.ScannerUtil;

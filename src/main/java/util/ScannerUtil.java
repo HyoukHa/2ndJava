@@ -30,7 +30,7 @@ public class ScannerUtil {
         return temp;
     }
 
-    // 3. 특정 범위안의 int를 리텆ㄴㄴ하는 nextInt()
+    // 3. 특정 범위안의 int를 리턴하는 nextInt()
     public static int nextInt(Scanner scanner, String message, int min, int max) {
         int temp = nextInt(scanner, message);
         while(temp < min || temp > max) {

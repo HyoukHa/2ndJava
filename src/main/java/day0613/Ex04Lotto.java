@@ -1,4 +1,4 @@
-package day0614;
+package day0613;
 
 // 1. 자동 2. 수동 입력가능한 로또추첨기
 

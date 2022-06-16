@@ -2,6 +2,8 @@ package util;
 
 // 배열을 다룰 때 도움이 되는 다양한 메소드를 정의한 ArrayUtil 클래스
 
+import struct.Student;
+
 public class ArrayUtil {
     // 1. int[]
     // 1.1 현재 배열의 길이를 리턴하는 size()
@@ -238,4 +240,122 @@ public class ArrayUtil {
         return remove(arr, indexOf(arr, str));
     }
 
+
+    // 3. Student[]
+    // size()
+    public static int size(Student[] arr) {
+        return arr.length;
+    }
+
+    // isEmpty()
+    public static boolean isEmpty(Student[] arr) {
+        return size(arr) == 0;
+    }
+
+    // get()
+    public static Student get(Student[] arr, int index) {
+        return arr[index];
+    }
+
+    // equals()
+    public static boolean equals(Student s1, Student s2) {
+        return s1.id == s2.id;
+    }
+
+    // contains()
+    public static boolean contains(Student[] arr, Student element) {
+        for(Student s : arr) {
+            if(equals(s, element)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // indexOf()
+    public static int indexOf(Student[] arr, Student element) {
+        for(int i = 0 ; i < size(arr) ; i++) {
+            if(equals(arr[i], element)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // lastIndexOf()
+    public static int lastIndexOf(Student[] arr, Student element) {
+        for(int i = size(arr) - 1 ; i >= 0 ; i++) {
+            if(equals(arr[i], element)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // add()
+    public static Student[] add(Student[] arr, Student element) {
+        Student[] newArr = new Student[size(arr) + 1];
+
+        for(int i = 0 ; i < size(newArr) - 1 ; i++) {
+            newArr[i] = get(arr, i);
+        }
+
+        newArr[size(newArr) - 1] = element;
+
+        return newArr;
+    }
+
+    // add() : index;
+    public static Student[] add(Student[] arr, int index, Student element) {
+        Student[] newArr = new Student[size(arr) + 1];
+
+        for(int i = 0 ; i < index ; i++) {
+            newArr = add(newArr, get(arr, i));
+        }
+
+        newArr = add(newArr, element);
+
+        for(int i = index ; i < size(arr) ; i++) {
+            newArr = add(newArr, get(arr, i));
+        }
+
+        return newArr;
+    }
+
+    // set()
+    public static Student set(Student[] arr, int index, Student element) {
+        Student temp = get(arr, index);
+        arr[index] = element;
+        return temp;
+    }
+
+    // remove()
+    public static Student[] remove(Student[] arr, int index) {
+        if(index < 0 || index >= size(arr) ) {
+            return arr;
+        }
+
+        Student[] newArr = new Student[0];
+        for(int i = 0 ; i < size(arr) ; i++) {
+            if(i != index) {
+                newArr = add(newArr, get(arr, i));
+            }
+        }
+        return newArr;
+    }
+
+    // remove()
+    public static Student[] remove(Student[] arr, Student element) {
+        return remove(arr, indexOf(arr, element));
+//        Student[] newArr = new Student[0];
+//
+//        for(Student s : arr) {
+//            if(equals(s, element)) {
+//                newArr = add(newArr, s);
+//            }
+//        }
+//
+//        return newArr;
+    }
 }
